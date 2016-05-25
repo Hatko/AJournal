@@ -9,7 +9,7 @@ import Alamofire
 
 class WebserviceManager {
     static let sharedInstance = WebserviceManager()
-    private let rootUrlString = "http://451c42a4.ngrok.io/parse"
+    private let rootUrlString = "http://267f5b39.ngrok.io/parse"
 
     init() {
         let configuration = ParseClientConfiguration {

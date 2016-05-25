@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
 //        WebserviceManager.sharedInstance.login("test@gmail.com", pass: "")
 
         nameTextField.text = "cherednichenko@gmail.com"
-
+        passTextField.text = "1111"
 
 //
 //        WebserviceManager.sharedInstance

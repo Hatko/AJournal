@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 import CVCalendar
 
-class ScheduleViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+class ScheduleViewController: UIViewController {
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +21,8 @@ class ScheduleViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     private var lessons : [BaseLesson]? = []
     private var lessonsSeparatedByDays : [[BaseLesson]]! = [[],[],[],[],[],[],[]]//0 for monday
     private var lessonsForCurrentDate : [BaseLesson] = []
+
+    private let lLessonListId = "lCheckingViewController"
 
     enum ViewType {
         case List, Grid
@@ -44,6 +46,8 @@ class ScheduleViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         }
 
         invalidateLessonsForDate()
+
+        tableView.tableFooterView = UIView()
     }
 
     private func invalidateLessonsForDate() {
@@ -95,21 +99,22 @@ class ScheduleViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         menuView.commitMenuViewUpdate()
         calendarView.commitCalendarViewUpdate()
     }
-    
-    
-    //MARK: CVCalendarViewDelegate
-    
+}
+
+
+private typealias CalendarViewController = ScheduleViewController
+extension CalendarViewController : CVCalendarViewDelegate, CVCalendarMenuViewDelegate{
     func presentationMode() -> CalendarMode {
         return .MonthView
     }
-    
+
     func firstWeekday() -> Weekday {
         return .Monday
     }
-    
+
     func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
         let newDate = dayView.date
-        
+
         if newDate != selectedDate {
             selectedDate = dayView.date
 
@@ -120,19 +125,25 @@ class ScheduleViewController: UIViewController, CVCalendarViewDelegate, CVCalend
             invalidateTitle()
         }
     }
-    
+
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
         return [UIColor.redColor()]
     }
-    
+
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
         return lessonsSeparatedByDays[dayView.date.getDayOfWeek()].count > 0
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == lLessonListId {
+            (segue.destinationViewController as! CheckTabController).lesson = (sender as! BaseLesson)
+        }
     }
 }
 
 
 private typealias TableViewDataSource = ScheduleViewController
-extension TableViewDataSource : UITableViewDataSource{
+extension TableViewDataSource : UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6//6 lessons per day
     }
@@ -147,11 +158,26 @@ extension TableViewDataSource : UITableViewDataSource{
         }).first {
             cell.textLabel!.text = lesson.discipline!.name
             cell.detailTextLabel!.text = lesson.room
+            cell.accessoryType = .DisclosureIndicator
         } else {
-
+            cell.textLabel!.text = ""
+            cell.detailTextLabel!.text = ""
+            cell.accessoryType = .None
         }
 
         return cell
+    }
+
+
+    //MARK:UITableViewDelegate
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        if let lesson = lessonsForCurrentDate.filter({
+            (selectedLesson: BaseLesson) -> Bool in
+            return selectedLesson.numberOfLesson == indexPath.row
+        }).first {
+            performSegueWithIdentifier(lLessonListId, sender: lesson)
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -285,12 +285,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7U-Mo-NHk">
                                                     <rect key="frame" x="8" y="11" width="27" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="liC-Jz-JQ0">
                                                     <rect key="frame" x="43" y="0.0" width="1" height="44"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JF7-TV-S3Y">
                                                     <rect key="frame" x="65" y="5" width="32" height="20"/>
@@ -315,6 +315,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="mWZ-Df-Qgs" id="j9B-Ra-7F3"/>
+                                    <outlet property="delegate" destination="mWZ-Df-Qgs" id="cVi-4F-kSY"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -350,17 +351,17 @@
                         <outlet property="nameLabel" destination="ZyZ-sr-y67" id="iIQ-uS-1i3"/>
                         <outlet property="tableView" destination="ynb-IG-2o0" id="5tD-2o-TAS"/>
                         <outlet property="viewWithCalendar" destination="8IV-j7-d7k" id="YcV-n3-zMd"/>
-                        <segue destination="YL1-4Y-DHH" kind="show" id="6Xo-B3-Jl1"/>
+                        <segue destination="YL1-4Y-DHH" kind="show" identifier="lCheckingViewController" id="6Xo-B3-Jl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS9-Q1-Bwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1564" y="724"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Check Tab Controller-->
         <scene sceneID="WX2-S4-n7T">
             <objects>
-                <tabBarController id="YL1-4Y-DHH" sceneMemberID="viewController">
+                <tabBarController id="YL1-4Y-DHH" customClass="CheckTabController" customModule="AJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="aqL-Lr-aCX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

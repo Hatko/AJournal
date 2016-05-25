@@ -9,18 +9,29 @@ import UIKit
 class ListViewController: UIViewController, UITableViewDataSource {
     @IBOutlet private weak var tableView: UITableView!
     
-    var names = ["First", "Second", "Third", "Fourth", "Fifth"]
+    private var groups : [Group]? = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        groups = (parentViewController as! CheckTabController).lesson!.groups
+    }
+
 
     // MARK: UITableViewDataSource
 
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        return groups!.count
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return groups![section].students!.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("lStudentCell", forIndexPath:indexPath) as! StudentCell
 
-        cell.chargeWithStudentName(names[indexPath.row])
+//        cell.chargeWithStudentName(names[indexPath.row])
 
         return cell
     }
