@@ -31,7 +31,10 @@ class ListViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("lStudentCell", forIndexPath:indexPath) as! StudentCell
 
-//        cell.chargeWithStudentName(names[indexPath.row])
+        let group = groups![indexPath.section]
+        let student = group.students![indexPath.row]
+
+        cell.chargeWithStudentName((student as! Student).name!)
 
         return cell
     }

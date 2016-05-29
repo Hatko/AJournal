@@ -61,7 +61,21 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginButtonTapped(sender: UIButton) {
         if nameTextField.text?.characters.count > 0 && passTextField.text?.characters.count > 0 {
+            if nameTextField.text == "set custom address" {
+                WebserviceManager.sharedInstance.setNewRootURLString(passTextField.text!)
+
+                let alert = UIAlertController(title: nil, message: "Changed addres", preferredStyle: .Alert)
+
+                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+
+                presentViewController(alert, animated: true, completion: nil)
+
+                return
+            }
+
             let spinner = SwiftSpinner.show("Connecting to satellite...")
+
+            WebserviceManager.sharedInstance.setUpParse()
 
             WebserviceManager.sharedInstance.login(nameTextField.text!, pass: md5(string: passTextField.text!)) {
                 (lector: Lector?, error: NSError?) -> Void in

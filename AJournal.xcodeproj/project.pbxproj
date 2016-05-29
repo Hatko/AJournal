@@ -20,6 +20,7 @@
 		28B97BE48E5BC62C5C4DBA9B /* Discipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B97BA0BEDA52FFA143D6B5 /* Discipline.swift */; };
 		28B97ED6C5AD2684DD915B8D /* Lector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B974DDFE80EC7B137D566B /* Lector.swift */; };
 		66FAAE62F15467E4BEF96850 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20561222395BA9B609C6E9D /* Pods.framework */; };
+		E652803BDC43C37151200E64 /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65280B7A3E6485F1749A6BA /* EditDataViewController.swift */; };
 		E652883218CBA2A265A44853 /* CheckTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6528ECD0E30E83CCA454CFE /* CheckTabController.swift */; };
 		F58B8C701CC79DCD009A2929 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58B8C6A1CC79DCD009A2929 /* Bolts.framework */; };
 		F58B8C711CC79DCD009A2929 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58B8C6B1CC79DCD009A2929 /* Parse.framework */; };
@@ -62,6 +63,7 @@
 		438CD0B8BCF05AEFF5CA301B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		47B73FF0A0758A8C0094761E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A20561222395BA9B609C6E9D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E65280B7A3E6485F1749A6BA /* EditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDataViewController.swift; sourceTree = "<group>"; };
 		E6528ECD0E30E83CCA454CFE /* CheckTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabController.swift; sourceTree = "<group>"; };
 		F56694E51CDF936C00F669DC /* AJournal-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AJournal-Bridging-Header.h"; sourceTree = "<group>"; };
 		F58B8C6A1CC79DCD009A2929 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				28B97BE22A27CC1E89B2B02F /* ListViewController.swift */,
 				28B9764C27165BF0AFEFB5A5 /* scheduleViewController */,
 				E6528ECD0E30E83CCA454CFE /* CheckTabController.swift */,
+				E65280B7A3E6485F1749A6BA /* EditDataViewController.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				28B9772E3EDEBAE570C25A4E /* BaseLesson.swift in Sources */,
 				28B9769BC5B689C254BA65E4 /* ScheduleViewController.swift in Sources */,
 				E652883218CBA2A265A44853 /* CheckTabController.swift in Sources */,
+				E652803BDC43C37151200E64 /* EditDataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

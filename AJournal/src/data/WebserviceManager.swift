@@ -9,9 +9,22 @@ import Alamofire
 
 class WebserviceManager {
     static let sharedInstance = WebserviceManager()
-    private let rootUrlString = "http://267f5b39.ngrok.io/parse"
+    private var rootUrlString = "http://c4829ae1.ngrok.io/parse"
+    private var parseSetUp = false
 
     init() {
+        BaseLesson.registerSubclass()
+        Lector.registerSubclass()
+        Discipline.registerSubclass()
+        Student.registerSubclass()
+        Group.registerSubclass()
+    }
+
+    func setUpParse() {
+        if parseSetUp {
+            return
+        }
+
         let configuration = ParseClientConfiguration {
             $0.applicationId = "journalApi"
             $0.clientKey = "journalApi"
@@ -19,11 +32,46 @@ class WebserviceManager {
         }
         Parse.initializeWithConfiguration(configuration)
 
-        BaseLesson.registerSubclass()
-        Lector.registerSubclass()
-        Discipline.registerSubclass()
-        Student.registerSubclass()
-        Group.registerSubclass()
+        parseSetUp = true
+    }
+
+    func setNewRootURLString(newString: String){
+        rootUrlString = newString
+    }
+
+    func fetchAllStudentsForLesson(lesson: BaseLesson, withCompletion completion: FetchResultBlock){
+        var dispatchGroup = dispatch_group_create()
+
+        var errors = [NSError]()
+
+        for group in lesson.groups! {
+            dispatch_group_enter(dispatchGroup)
+
+            (group as! Group).fetchIfNeededInBackgroundWithBlock {
+                (resultObject: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    errors.append(error!)
+                }
+
+                if group.students != nil {
+                    for student in group.students! {
+
+                        (student as! Student).fetchIfNeededInBackgroundWithBlock {
+                            (resultObject: PFObject?, error: NSError?) -> Void in
+                            if error != nil {
+                                errors.append(error!)
+                            }
+
+                            dispatch_group_leave(dispatchGroup)
+                        }
+                    }
+                }
+            }
+        }
+
+        dispatch_group_notify(dispatchGroup, dispatch_get_main_queue(), {
+            completion(errors: errors)
+        })
     }
 
     func getLessonsWithCompletion(completion: LessonsArrayResultBlock) {
@@ -37,6 +85,10 @@ class WebserviceManager {
         // fetching all disciplines, so we could use them right away
         query.includeKey("discipline")
         //
+
+        query.includeKey("groups")
+        query.includeKey("groups.students")
+
 
         query.findObjectsInBackgroundWithBlock{
             (objectsArray: [PFObject]?, error: NSError?) -> Void in
@@ -74,3 +126,4 @@ class WebserviceManager {
 
 typealias LessonsArrayResultBlock = ([BaseLesson]?, NSError?) -> Void
 typealias LoginResultBlock = (Lector?, NSError?) -> Void
+typealias FetchResultBlock = (errors: [NSError]?) -> Void

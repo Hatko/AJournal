@@ -251,18 +251,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPB-zR-AUP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyZ-sr-y67">
-                                        <rect key="frame" x="543" y="10" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glz-6B-xlQ">
+                                        <rect key="frame" x="544" y="0.0" width="46" height="40"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="3M0-6W-aAl" kind="show" id="Q2R-bk-9XC"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ZyZ-sr-y67" secondAttribute="trailing" constant="15" id="PtC-Uu-Iaa"/>
+                                    <constraint firstAttribute="bottom" secondItem="glz-6B-xlQ" secondAttribute="bottom" id="UOU-um-EaD"/>
+                                    <constraint firstAttribute="trailing" secondItem="glz-6B-xlQ" secondAttribute="trailing" constant="10" id="W9e-j0-U8f"/>
                                     <constraint firstAttribute="height" constant="40" id="l9U-uS-bCR"/>
-                                    <constraint firstItem="ZyZ-sr-y67" firstAttribute="centerY" secondItem="lPB-zR-AUP" secondAttribute="centerY" id="x4K-fY-wCL"/>
+                                    <constraint firstItem="glz-6B-xlQ" firstAttribute="top" secondItem="lPB-zR-AUP" secondAttribute="top" id="qHX-hO-sJW"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No lessons for this day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqq-J1-tCM">
@@ -345,10 +347,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accountButton" destination="glz-6B-xlQ" id="KU0-03-HYw"/>
                         <outlet property="calendarBottom" destination="zck-fa-av3" id="lFY-Mo-eGE"/>
                         <outlet property="calendarView" destination="PIx-ZA-8z1" id="URN-h4-qPj"/>
                         <outlet property="menuView" destination="6XG-wg-lVC" id="gtl-rS-HNn"/>
-                        <outlet property="nameLabel" destination="ZyZ-sr-y67" id="iIQ-uS-1i3"/>
                         <outlet property="tableView" destination="ynb-IG-2o0" id="5tD-2o-TAS"/>
                         <outlet property="viewWithCalendar" destination="8IV-j7-d7k" id="YcV-n3-zMd"/>
                         <segue destination="YL1-4Y-DHH" kind="show" identifier="lCheckingViewController" id="6Xo-B3-Jl1"/>
@@ -376,6 +378,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kir-kW-RgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2440" y="724"/>
+        </scene>
+        <!--Edit Data View Controller-->
+        <scene sceneID="b0Q-e9-r9X">
+            <objects>
+                <viewController id="3M0-6W-aAl" customClass="EditDataViewController" customModule="AJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dGb-zl-vz0"/>
+                        <viewControllerLayoutGuide type="bottom" id="pcl-D1-6Ya"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q32-VR-tLX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Gc-6Y-euR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2440" y="1508"/>
         </scene>
     </scenes>
     <resources>

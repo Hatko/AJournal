@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import CVCalendar
+import SwiftSpinner
 
 class ScheduleViewController: UIViewController {
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -15,8 +16,8 @@ class ScheduleViewController: UIViewController {
     
     private var selectedDate: CVDate!
 
+    @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var calendarBottom: NSLayoutConstraint!
-    @IBOutlet weak var nameLabel: UILabel!
 
     private var lessons : [BaseLesson]? = []
     private var lessonsSeparatedByDays : [[BaseLesson]]! = [[],[],[],[],[],[],[]]//0 for monday
@@ -33,7 +34,7 @@ class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nameLabel.text = UserManager.sharedInstance.currentLector!.name
+        accountButton.setTitle(UserManager.sharedInstance.currentLector!.name, forState: .Normal)
 
         selectedDate = CVDate(date: NSDate())
 
@@ -150,6 +151,9 @@ extension TableViewDataSource : UITableViewDataSource, UITableViewDelegate{
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("lLessonListId", forIndexPath: indexPath) as! LessonCell
+
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+
         cell.lessonNumberLabel.text = "\(indexPath.row)"
 
         if let lesson = lessonsForCurrentDate.filter({
