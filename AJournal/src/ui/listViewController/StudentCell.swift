@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 
 class StudentCell: UITableViewCell {
-    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
 
     func chargeWithStudentName(studentName: String) {
         nameLabel.text = studentName

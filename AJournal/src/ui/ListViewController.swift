@@ -6,10 +6,13 @@
 import Foundation
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
     
     private var groups : [Group]? = []
+    private var selectedCells = Set<Int>()
+
+    private let fakeStudents = ["Mike", "Kevin", "Jule", "Stiven", "Ban"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +28,40 @@ class ListViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups![section].students!.count
+        return fakeStudents.count//groups![section].students!.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("lStudentCell", forIndexPath:indexPath) as! StudentCell
 
-        let group = groups![indexPath.section]
-        let student = group.students![indexPath.row]
+        cell.selectionStyle = .None
 
-        cell.chargeWithStudentName((student as! Student).name!)
+        if selectedCells.contains(indexPath.row) {
+            cell.accessoryType = .Checkmark
+        } else {
+            cell.accessoryType = .None
+        }
+
+        let group = groups![indexPath.section]
+        let studentName = fakeStudents[indexPath.row]//(group.students![indexPath.row] as! Student).name!
+
+        if cell.nameLabel.text != studentName {
+            cell.nameLabel.text = studentName
+        }
 
         return cell
+    }
+
+
+    //MARK: UITableViewDelegate
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if selectedCells.contains(indexPath.row) {
+            selectedCells.remove(indexPath.row)
+            tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .None
+        } else {
+            tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = .Checkmark
+            selectedCells.insert(indexPath.row)
+        }
     }
 }

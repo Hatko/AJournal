@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="width" constant="280" id="qnS-0C-ahA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="3196" y="1054"/>
         </scene>
-        <!--Students List-->
+        <!--Group 555v-->
         <scene sceneID="IUf-Gm-MfT">
             <objects>
                 <viewController id="Euq-r3-KR4" customClass="ListViewController" customModule="AJournal" customModuleProvider="target" sceneMemberID="viewController">
@@ -107,11 +107,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lStudentCell" id="dxl-AA-pHQ" customClass="StudentCell" customModule="AJournal" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="lStudentCell" id="dxl-AA-pHQ" customClass="StudentCell" customModule="AJournal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxl-AA-pHQ" id="Oq9-7y-q2P">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seH-PK-05I">
@@ -134,12 +134,12 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="seH-PK-05I" id="vHw-xz-Neq"/>
-                                            <segue destination="3Ke-jt-T38" kind="show" id="ClJ-YR-G3u"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Euq-r3-KR4" id="mif-6V-Aws"/>
+                                    <outlet property="delegate" destination="Euq-r3-KR4" id="gL4-24-7Ku"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -160,7 +160,9 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" id="d1B-tH-xf5"/>
-                    <navigationItem key="navigationItem" title="Students List" id="e4g-oj-mCi"/>
+                    <navigationItem key="navigationItem" title="Group 555v" id="4od-Pl-Ff6">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Zdy-zc-Koi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ypi-jr-YAq" id="jwb-lg-1sQ"/>
                     </connections>
@@ -364,7 +366,6 @@
         <scene sceneID="WX2-S4-n7T">
             <objects>
                 <tabBarController id="YL1-4Y-DHH" customClass="CheckTabController" customModule="AJournal" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="aqL-Lr-aCX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -382,7 +383,7 @@
         <!--Edit Data View Controller-->
         <scene sceneID="b0Q-e9-r9X">
             <objects>
-                <viewController id="3M0-6W-aAl" customClass="EditDataViewController" customModule="AJournal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="3M0-6W-aAl" customClass="EditDataViewController" customModule="AJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dGb-zl-vz0"/>
                         <viewControllerLayoutGuide type="bottom" id="pcl-D1-6Ya"/>
@@ -390,7 +391,32 @@
                     <view key="view" contentMode="scaleToFill" id="q32-VR-tLX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dTy-b3-2DU">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KfE-o0-0m5">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KfE-o0-0m5" id="RBE-r5-BcY">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3M0-6W-aAl" id="KeN-6I-Klw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dTy-b3-2DU" firstAttribute="leading" secondItem="q32-VR-tLX" secondAttribute="leading" id="GQO-p7-cHX"/>
+                            <constraint firstAttribute="trailing" secondItem="dTy-b3-2DU" secondAttribute="trailing" id="MnL-Rs-J8L"/>
+                            <constraint firstItem="pcl-D1-6Ya" firstAttribute="top" secondItem="dTy-b3-2DU" secondAttribute="bottom" id="WHK-fY-roi"/>
+                            <constraint firstItem="dTy-b3-2DU" firstAttribute="top" secondItem="dGb-zl-vz0" secondAttribute="bottom" id="eb1-d8-9Jp"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gc-6Y-euR" userLabel="First Responder" sceneMemberID="firstResponder"/>
