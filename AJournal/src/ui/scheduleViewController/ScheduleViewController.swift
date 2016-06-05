@@ -7,6 +7,7 @@ import Foundation
 import UIKit
 import CVCalendar
 import SwiftSpinner
+import Parse
 
 class ScheduleViewController: UIViewController {
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -195,9 +196,35 @@ extension TableViewDataSource : UITableViewDataSource, UITableViewDelegate{
             (selectedLesson: BaseLesson) -> Bool in
             return selectedLesson.numberOfLesson == indexPath.row
         }).first {
-            performSegueWithIdentifier(lLessonListId, sender: lesson)
+            self.req(0, lesson: lesson)
         }
     }
+
+    func req(idx: Int, lesson: BaseLesson){
+        if lesson.groups!.count > idx {
+            lesson.groups![idx].fetchIfNeededInBackgroundWithBlock {
+                (object: PFObject?, error: NSError?) -> Void in
+                self.reqS(0, group: lesson.groups![idx], completion: {
+                    self.req(idx + 1, lesson: lesson)
+                })
+            }
+        } else {
+            self.performSegueWithIdentifier(self.lLessonListId, sender: lesson)
+        }
+    }
+
+    func reqS(idx: Int, group: Group, completion: SimpleBlock){
+        if group.students!.count > idx {
+            group.students![idx].fetchIfNeededInBackgroundWithBlock{
+                (object: PFObject?, error: NSError?) -> Void in
+                self.reqS(idx + 1, group: group, completion: completion)
+            }
+        } else {
+            completion()
+        }
+    }
+
+    typealias SimpleBlock = () -> Void
 }
 
 

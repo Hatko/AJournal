@@ -134,6 +134,8 @@ class WebserviceManager {
                 }
             }
 
+            PFQuery(className: Student.parseClassName()).findObjectsInBackground()
+
             //
 
             UserManager.sharedInstance.userLessons = allLessons
