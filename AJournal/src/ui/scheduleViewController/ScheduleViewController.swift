@@ -58,6 +58,21 @@ class ScheduleViewController: UIViewController {
 
         tableView.hidden = lessonsForCurrentDate.count == 0
     }
+    
+    @IBAction func accountButtonTapped(sender: UIButton) {
+        SwiftSpinner.show("Retreiving all data...")
+
+        WebserviceManager.sharedInstance.fetchAllGroupsWithCompletion{
+            (error: NSError?) -> Void in
+            if error != nil {
+                print(error!.description)
+            } else {
+                self.performSegueWithIdentifier("lEditDataSegueID", sender: nil)
+            }
+
+            SwiftSpinner.hide()
+        }
+    }
 
     @IBAction func viewBarButtonTapped(sender: UIBarButtonItem) {
         if viewType == .List {
@@ -152,7 +167,7 @@ extension TableViewDataSource : UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("lLessonListId", forIndexPath: indexPath) as! LessonCell
 
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = .None
 
         cell.lessonNumberLabel.text = "\(indexPath.row)"
 

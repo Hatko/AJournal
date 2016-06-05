@@ -1,3 +1,4 @@
+
 //
 // Created by Vlad Hatko on 4/15/16.
 // Copyright (c) 2016 Hatcom. All rights reserved.
@@ -28,7 +29,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fakeStudents.count//groups![section].students!.count
+        return groups![section].students!.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -43,7 +44,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         let group = groups![indexPath.section]
-        let studentName = fakeStudents[indexPath.row]//(group.students![indexPath.row] as! Student).name!
+        let studentName = group.students![indexPath.row].name!
 
         if cell.nameLabel.text != studentName {
             cell.nameLabel.text = studentName

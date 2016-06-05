@@ -119,13 +119,11 @@ class LoginViewController: UIViewController {
                     UserManager.sharedInstance.currentLector = lector
 
                     WebserviceManager.sharedInstance.getLessonsWithCompletion{
-                        (lessons: [BaseLesson]?, error: NSError?) -> Void in
+                        (error: NSError?) -> Void in
 
                         if error != nil {
                             print("error occured:\(error!.description)")
                         }
-
-                        UserManager.sharedInstance.userLessons = lessons
 
                         self.performSegueWithIdentifier("lLoginToScheduleSegueID", sender: nil)
 

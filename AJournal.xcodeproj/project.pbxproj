@@ -21,7 +21,11 @@
 		28B97ED6C5AD2684DD915B8D /* Lector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B974DDFE80EC7B137D566B /* Lector.swift */; };
 		66FAAE62F15467E4BEF96850 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20561222395BA9B609C6E9D /* Pods.framework */; };
 		E652803BDC43C37151200E64 /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65280B7A3E6485F1749A6BA /* EditDataViewController.swift */; };
+		E652804B9904711F7ED0F37E /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65280E025FC2A88A862FEF6 /* AddGroupViewController.swift */; };
+		E652808AB75F4EA4E5630C86 /* AddLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65284723BD677C431AA0A72 /* AddLessonViewController.swift */; };
+		E652834BC835D6E5DE774E5F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6528E737E760E10A0D2B709 /* DataManager.swift */; };
 		E652883218CBA2A265A44853 /* CheckTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6528ECD0E30E83CCA454CFE /* CheckTabController.swift */; };
+		E6528C9E8D47889F1E8726A2 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6528D04F60753C0558E63D8 /* UIAlertControllerExtension.swift */; };
 		F58B8C701CC79DCD009A2929 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58B8C6A1CC79DCD009A2929 /* Bolts.framework */; };
 		F58B8C711CC79DCD009A2929 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58B8C6B1CC79DCD009A2929 /* Parse.framework */; };
 		F58B8C721CC79DCD009A2929 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58B8C6C1CC79DCD009A2929 /* ParseFacebookUtils.framework */; };
@@ -42,7 +46,6 @@
 		F5CF0D671CC13631003BC52F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CF0D661CC13631003BC52F /* MobileCoreServices.framework */; };
 		F5CF0D691CC13639003BC52F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CF0D681CC13639003BC52F /* QuartzCore.framework */; };
 		F5CF0D6B1CC13644003BC52F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CF0D6A1CC13644003BC52F /* Security.framework */; };
-		F5CF0D6D1CC1364C003BC52F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CF0D6C1CC1364C003BC52F /* StoreKit.framework */; };
 		F5CF0D6F1CC13657003BC52F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CF0D6E1CC13657003BC52F /* SystemConfiguration.framework */; };
 		F5CF0D711CC136A7003BC52F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CF0D701CC136A7003BC52F /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
@@ -64,6 +67,10 @@
 		47B73FF0A0758A8C0094761E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A20561222395BA9B609C6E9D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65280B7A3E6485F1749A6BA /* EditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDataViewController.swift; sourceTree = "<group>"; };
+		E65280E025FC2A88A862FEF6 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		E65284723BD677C431AA0A72 /* AddLessonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLessonViewController.swift; sourceTree = "<group>"; };
+		E6528D04F60753C0558E63D8 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		E6528E737E760E10A0D2B709 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E6528ECD0E30E83CCA454CFE /* CheckTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTabController.swift; sourceTree = "<group>"; };
 		F56694E51CDF936C00F669DC /* AJournal-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AJournal-Bridging-Header.h"; sourceTree = "<group>"; };
 		F58B8C6A1CC79DCD009A2929 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -101,7 +108,6 @@
 				F58B8C721CC79DCD009A2929 /* ParseFacebookUtils.framework in Frameworks */,
 				F5CF0D711CC136A7003BC52F /* libsqlite3.tbd in Frameworks */,
 				F5CF0D6F1CC13657003BC52F /* SystemConfiguration.framework in Frameworks */,
-				F5CF0D6D1CC1364C003BC52F /* StoreKit.framework in Frameworks */,
 				F58B8C701CC79DCD009A2929 /* Bolts.framework in Frameworks */,
 				F5CF0D6B1CC13644003BC52F /* Security.framework in Frameworks */,
 				F58B8C741CC79DCD009A2929 /* ParseTwitterUtils.framework in Frameworks */,
@@ -219,6 +225,7 @@
 				28B97004CA31C1F796DE5F14 /* WebserviceManager.swift */,
 				28B97B98639B295CCD2F1996 /* models */,
 				28B97D9F1ABFCF25EF336583 /* UserManager.swift */,
+				E6528E737E760E10A0D2B709 /* DataManager.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -233,6 +240,9 @@
 				28B9764C27165BF0AFEFB5A5 /* scheduleViewController */,
 				E6528ECD0E30E83CCA454CFE /* CheckTabController.swift */,
 				E65280B7A3E6485F1749A6BA /* EditDataViewController.swift */,
+				E65280E025FC2A88A862FEF6 /* AddGroupViewController.swift */,
+				E6528D04F60753C0558E63D8 /* UIAlertControllerExtension.swift */,
+				E65284723BD677C431AA0A72 /* AddLessonViewController.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -302,6 +312,7 @@
 				TargetAttributes = {
 					F5BCA8741CAD0CA7005813B8 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = S462JSAM8X;
 					};
 				};
 			};
@@ -406,6 +417,10 @@
 				28B9769BC5B689C254BA65E4 /* ScheduleViewController.swift in Sources */,
 				E652883218CBA2A265A44853 /* CheckTabController.swift in Sources */,
 				E652803BDC43C37151200E64 /* EditDataViewController.swift in Sources */,
+				E652834BC835D6E5DE774E5F /* DataManager.swift in Sources */,
+				E652804B9904711F7ED0F37E /* AddGroupViewController.swift in Sources */,
+				E6528C9E8D47889F1E8726A2 /* UIAlertControllerExtension.swift in Sources */,
+				E652808AB75F4EA4E5630C86 /* AddLessonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +534,8 @@
 			baseConfigurationReference = 47B73FF0A0758A8C0094761E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AJournal/vendor",
@@ -527,6 +544,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hatcom.AJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AJournal/AJournal-Bridging-Header.h";
 			};
 			name = Debug;
@@ -536,6 +554,8 @@
 			baseConfigurationReference = 438CD0B8BCF05AEFF5CA301B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AJournal/vendor",
@@ -544,6 +564,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hatcom.AJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AJournal/AJournal-Bridging-Header.h";
 			};
 			name = Release;

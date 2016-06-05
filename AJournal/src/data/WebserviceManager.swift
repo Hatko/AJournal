@@ -9,7 +9,7 @@ import Alamofire
 
 class WebserviceManager {
     static let sharedInstance = WebserviceManager()
-    private var rootUrlString = "http://c4829ae1.ngrok.io/parse"
+    private var rootUrlString = "http://980f3cf0.ngrok.io/parse"
     private var parseSetUp = false
 
     init() {
@@ -38,6 +38,24 @@ class WebserviceManager {
     func setNewRootURLString(newString: String){
         rootUrlString = newString
     }
+
+    //
+    // result will be stored in DataManager
+    func fetchAllGroupsWithCompletion(completion: FetchGroupsResultBlock){
+        let query = PFQuery(className: Group.parseClassName())
+
+        query.includeKey("students")
+
+        query.findObjectsInBackgroundWithBlock{
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil && objects != nil && objects!.count > 0 {
+                DataManager.sharedInstance.allGroups = objects as! [Group]
+            }
+
+            completion(error: error)
+        }
+    }
+    //
 
     func fetchAllStudentsForLesson(lesson: BaseLesson, withCompletion completion: FetchResultBlock){
         var dispatchGroup = dispatch_group_create()
@@ -87,8 +105,6 @@ class WebserviceManager {
         //
 
         query.includeKey("groups")
-        query.includeKey("groups.students")
-
 
         query.findObjectsInBackgroundWithBlock{
             (objectsArray: [PFObject]?, error: NSError?) -> Void in
@@ -98,21 +114,31 @@ class WebserviceManager {
                 allLessons = objectsArray as! [BaseLesson]
             }
 
-            completion(allLessons, error)
-
-            //MARK: temp
-
-            var idx = 0
+            //temp
 
             for lesson in allLessons {
-                lesson.numberOfLesson = idx
-                idx = idx + 1
+                lesson.fetchIfNeededInBackground()
+                if lesson.groups != nil {
+                    for group in lesson.groups! {
+                        group.fetchInBackground()
+
+                        if group.students != nil {
+                            for student in group.students! {
+                                student.fetchIfNeededInBackground()
+                            }
+                        }
+                    }
+                }
+                if lesson.discipline != nil {
+                    lesson.discipline!.fetchIfNeededInBackground()
+                }
             }
 
-            Lector.saveAllInBackground(allLessons){
-                (success: Bool, error: NSError?) -> Void in
+            //
 
-            }
+            UserManager.sharedInstance.userLessons = allLessons
+
+            completion(error)
         }
     }
 
@@ -124,6 +150,7 @@ class WebserviceManager {
     }
 }
 
-typealias LessonsArrayResultBlock = ([BaseLesson]?, NSError?) -> Void
+typealias LessonsArrayResultBlock = (NSError?) -> Void
 typealias LoginResultBlock = (Lector?, NSError?) -> Void
 typealias FetchResultBlock = (errors: [NSError]?) -> Void
+typealias FetchGroupsResultBlock = (error: NSError?) -> Void
