@@ -1,1 +1,1 @@
-# AJournal
+# AJournal updated
